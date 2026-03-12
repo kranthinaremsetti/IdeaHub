@@ -92,3 +92,7 @@ class UploadResponse(BaseModel):
             "including limitations and future improvements."
         )
     )
+    embedding: List[float] = Field(
+        default_factory=list,
+        description="384-dimensional sentence-transformers embedding for similarity search.",
+    )

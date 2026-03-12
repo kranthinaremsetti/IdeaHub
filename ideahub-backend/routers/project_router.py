@@ -12,6 +12,7 @@ from fastapi import APIRouter, File, HTTPException, UploadFile, status
 
 from config.settings import settings
 from schemas.project_schema import UploadResponse
+from services.embedding_service import generate_embedding
 from services.idea_analysis_service import generate_limitations_and_improvements
 from services.llm_service import extract_project_info
 from services.pdf_service import extract_text_from_pdf
@@ -139,4 +140,8 @@ async def upload_project(
         }
     )
 
-    return UploadResponse(filename=original_filename, extracted_info=enriched_info)
+    # ── Step 6 – Generate embedding for similarity search ────────────────────
+    project_dict = enriched_info.model_dump()
+    embedding = generate_embedding(project_dict)
+
+    return UploadResponse(filename=original_filename, extracted_info=enriched_info, embedding=embedding)

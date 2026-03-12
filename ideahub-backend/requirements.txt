@@ -16,3 +16,7 @@ pydantic-settings==2.4.0  # pydantic v2 settings management with .env support
 
 # ── File upload handling (included with FastAPI) ──────────────────────────────
 python-multipart==0.0.12  # Required by FastAPI to parse multipart/form-data
+
+# ── Sentence embeddings (local, no API key needed) ───────────────────────────
+sentence-transformers  # Pre-trained models for generating text embeddings
+numpy                  # Required for vector operations

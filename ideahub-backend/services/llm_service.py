@@ -9,7 +9,7 @@ import re
 import google.generativeai as genai
 
 from config.settings import settings
-from schemas.project_schema import ProjectInfo
+from schemas.project_schema import ProjectInfo, resolve_domain
 
 
 # ── Configure the Gemini client once, at module import time ──────────────────
@@ -22,7 +22,24 @@ _model = genai.GenerativeModel(settings.GEMINI_MODEL)
 
 # ── Prompt template ───────────────────────────────────────────────────────────
 _SYSTEM_PROMPT = """\
-You are an AI system that extracts structured information from student project reports.
+You are an AI system that extracts structured information from student project reports \
+and classifies the project into exactly one of the following four domains:
+
+  - Artificial Intelligence
+  - Machine Learning
+  - Quantum Computing
+  - Full Stack Development
+
+Classification rules:
+- Choose "Machine Learning" when the project involves training ML models, CNNs, RNNs,
+  LSTM, scikit-learn, TensorFlow, PyTorch, classification, regression, or clustering.
+- Choose "Quantum Computing" when the project involves Qiskit, quantum circuits, qubits,
+  superposition, entanglement, or quantum algorithms.
+- Choose "Full Stack Development" when the project is primarily a web/mobile application
+  built with React, Node.js, databases, REST APIs, or similar web technologies.
+- Choose "Artificial Intelligence" when the project involves LLMs, AI agents, intelligent
+  systems, NLP pipelines, computer vision, object detection, or autonomous decision-making.
+
 Extract the required fields and return valid JSON.
 
 Return ONLY a valid JSON object — no markdown fences, no extra commentary.
@@ -36,7 +53,7 @@ The JSON must follow this exact schema:
   "algorithms_models": ["<string>", ...],
   "technologies_used": ["<string>", ...],
   "datasets_used": ["<string>", ...],
-  "project_domain": "<string>",
+  "project_domain": "<one of: Artificial Intelligence | Machine Learning | Quantum Computing | Full Stack Development>",
   "keywords": ["<string>", ...],
   "github_repo": "<string>"
 }
@@ -84,6 +101,12 @@ def extract_project_info(text: str) -> ProjectInfo:
         raise ValueError(
             f"Gemini returned non-JSON content. Raw response:\n{raw_text}"
         ) from exc
+
+    # ── Resolve domain to one of the four valid values ────────────────────────
+    # Even if Gemini returns a valid domain string, we run it through
+    # resolve_domain() to normalise casing and handle edge cases.
+    raw_domain: str = data.get("project_domain", "")
+    data["project_domain"] = resolve_domain(raw_domain)
 
     # Pydantic will validate types and fill in defaults for missing fields.
     return ProjectInfo(**data)

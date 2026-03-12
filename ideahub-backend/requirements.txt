@@ -1,0 +1,18 @@
+# Python dependencies for the IdeaHub backend
+# Install with:  pip install -r requirements.txt
+
+# ── Web framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.0          # Modern async web framework
+uvicorn[standard]==0.30.6 # ASGI server for running FastAPI
+
+# ── PDF extraction ────────────────────────────────────────────────────────────
+pdfplumber==0.11.4        # Text extraction from PDF files
+
+# ── Google Gemini LLM ─────────────────────────────────────────────────────────
+google-generativeai==0.7.2  # Official Gemini Python SDK
+
+# ── Configuration / environment variables ────────────────────────────────────
+pydantic-settings==2.4.0  # pydantic v2 settings management with .env support
+
+# ── File upload handling (included with FastAPI) ──────────────────────────────
+python-multipart==0.0.12  # Required by FastAPI to parse multipart/form-data

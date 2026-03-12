@@ -1,0 +1,2 @@
+# uploads/ – persisted PDF files land here at runtime.
+# This file keeps the directory tracked in git while its contents are ignored.

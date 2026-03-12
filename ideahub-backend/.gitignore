@@ -1,0 +1,26 @@
+# .gitignore for ideahub-backend
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+
+# ── Uploaded files (may contain personal data) ───────────────────────────────
+uploads/*.pdf
+
+# ── Python bytecode ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Distribution / packaging ──────────────────────────────────────────────────
+dist/
+build/
+*.egg-info/
+
+# ── IDE files ─────────────────────────────────────────────────────────────────
+.vscode/
+.idea/

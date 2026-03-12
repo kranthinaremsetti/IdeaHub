@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
 
-const { uploadProjectReport, getProjects, getSimilarProjects } = require("../controllers/projectController");
+const { uploadProjectReport, getProjects, getProjectById, getSimilarProjects } = require("../controllers/projectController");
 
 const router = express.Router();
 
@@ -43,6 +43,9 @@ router.post("/upload-project", upload.single("file"), uploadProjectReport);
 
 // Fetch saved projects for the frontend project section.
 router.get("/projects", getProjects);
+
+// Fetch a single project by ID.
+router.get("/projects/:id", getProjectById);
 
 // Find semantically similar projects by embedding cosine similarity.
 router.get("/similar-projects/:id", getSimilarProjects);

@@ -1,0 +1,82 @@
+{
+  "1": {
+    "project_title": "Citizen Grievance Classification & Auto-Resolution Platform",
+    "folder_name": "01-Citizen_Grievance_Classification_and_Auto-Resolution_Platform",
+    "pdf_folder_path": "data/pdfs/01-Citizen_Grievance_Classification_and_Auto-Resolution_Platform"
+  },
+  "2": {
+    "project_title": "AI Personal Study Assistant",
+    "folder_name": "02-AI_Personal_Study_Assistant",
+    "pdf_folder_path": "data/pdfs/02-AI_Personal_Study_Assistant"
+  },
+  "3": {
+    "project_title": "AI Resume Screening System",
+    "folder_name": "03-AI_Resume_Screening_System",
+    "pdf_folder_path": "data/pdfs/03-AI_Resume_Screening_System"
+  },
+  "4": {
+    "project_title": "Intelligent Chatbot for Student Support",
+    "folder_name": "04-Intelligent_Chatbot_for_Student_Support",
+    "pdf_folder_path": "data/pdfs/04-Intelligent_Chatbot_for_Student_Support"
+  },
+  "5": {
+    "project_title": "Plant Disease Detection using CNN",
+    "folder_name": "05-Plant_Disease_Detection_using_CNN",
+    "pdf_folder_path": "data/pdfs/05-Plant_Disease_Detection_using_CNN"
+  },
+  "6": {
+    "project_title": "Stock Price Prediction using LSTM",
+    "folder_name": "06-Stock_Price_Prediction_using_LSTM",
+    "pdf_folder_path": "data/pdfs/06-Stock_Price_Prediction_using_LSTM"
+  },
+  "7": {
+    "project_title": "Face Recognition Attendance System",
+    "folder_name": "07-Face_Recognition_Attendance_System",
+    "pdf_folder_path": "data/pdfs/07-Face_Recognition_Attendance_System"
+  },
+  "8": {
+    "project_title": "Credit Card Fraud Detection Model",
+    "folder_name": "08-Credit_Card_Fraud_Detection_Model",
+    "pdf_folder_path": "data/pdfs/08-Credit_Card_Fraud_Detection_Model"
+  },
+  "9": {
+    "project_title": "Quantum Random Number Generator",
+    "folder_name": "09-Quantum_Random_Number_Generator",
+    "pdf_folder_path": "data/pdfs/09-Quantum_Random_Number_Generator"
+  },
+  "10": {
+    "project_title": "Quantum Machine Learning for Classification",
+    "folder_name": "10-Quantum_Machine_Learning_for_Classification",
+    "pdf_folder_path": "data/pdfs/10-Quantum_Machine_Learning_for_Classification"
+  },
+  "11": {
+    "project_title": "Quantum Optimization for Logistics",
+    "folder_name": "11-Quantum_Optimization_for_Logistics",
+    "pdf_folder_path": "data/pdfs/11-Quantum_Optimization_for_Logistics"
+  },
+  "12": {
+    "project_title": "Quantum Cryptography Simulation",
+    "folder_name": "12-Quantum_Cryptography_Simulation",
+    "pdf_folder_path": "data/pdfs/12-Quantum_Cryptography_Simulation"
+  },
+  "13": {
+    "project_title": "Online Course Management System",
+    "folder_name": "13-Online_Course_Management_System",
+    "pdf_folder_path": "data/pdfs/13-Online_Course_Management_System"
+  },
+  "14": {
+    "project_title": "E-commerce Platform with Payment Integration",
+    "folder_name": "14-E-commerce_Platform_with_Payment_Integration",
+    "pdf_folder_path": "data/pdfs/14-E-commerce_Platform_with_Payment_Integration"
+  },
+  "15": {
+    "project_title": "Collaborative Code Editor Web App",
+    "folder_name": "15-Collaborative_Code_Editor_Web_App",
+    "pdf_folder_path": "data/pdfs/15-Collaborative_Code_Editor_Web_App"
+  },
+  "16": {
+    "project_title": "Real-time Chat Application",
+    "folder_name": "16-Real-time_Chat_Application",
+    "pdf_folder_path": "data/pdfs/16-Real-time_Chat_Application"
+  }
+}

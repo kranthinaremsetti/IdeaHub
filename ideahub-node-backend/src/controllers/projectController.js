@@ -47,6 +47,22 @@ const getProjects = async (req, res, next) => {
   }
 };
 
+const getProjectById = async (req, res, next) => {
+  try {
+    const project = await ProjectExtraction.findById(req.params.id).lean();
+
+    if (!project) {
+      return res.status(404).json({ error: "Project not found" });
+    }
+
+    return res.status(200).json({
+      project
+    });
+  } catch (error) {
+    return next(error);
+  }
+};
+
 const getSimilarProjects = async (req, res, next) => {
   try {
     const target = await ProjectExtraction.findById(req.params.id).lean();
@@ -90,5 +106,6 @@ const getSimilarProjects = async (req, res, next) => {
 module.exports = {
   uploadProjectReport,
   getProjects,
+  getProjectById,
   getSimilarProjects
 };

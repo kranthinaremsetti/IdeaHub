@@ -4,8 +4,84 @@
 # the API – both for request validation and response serialisation.
 # ─────────────────────────────────────────────────────────────────────────────
 
+from enum import Enum
+
 from pydantic import BaseModel, Field
 from typing import List
+
+
+class ProjectDomain(str, Enum):
+    """
+    The four fixed domains a project can be classified into.
+    Using str+Enum means FastAPI serialises the value (the string) not the key.
+    """
+    ARTIFICIAL_INTELLIGENCE = "Artificial Intelligence"
+    MACHINE_LEARNING = "Machine Learning"
+    QUANTUM_COMPUTING = "Quantum Computing"
+    FULL_STACK_DEVELOPMENT = "Full Stack Development"
+
+
+# ── Keyword → Domain fallback mapping ────────────────────────────────────────
+# Used when Gemini returns a non-standard domain string.  The first match wins.
+_DOMAIN_KEYWORDS: list[tuple[list[str], ProjectDomain]] = [
+    (
+        ["tensorflow", "pytorch", "keras", "cnn", "rnn", "lstm", "nlp",
+         "natural language", "neural network", "deep learning", "scikit",
+         "random forest", "gradient boost", "xgboost", "classification",
+         "regression", "clustering", "machine learning", "ml model"],
+        ProjectDomain.MACHINE_LEARNING,
+    ),
+    (
+        ["qiskit", "quantum circuit", "qubit", "quantum gate", "quantum",
+         "superposition", "entanglement", "quantum computing"],
+        ProjectDomain.QUANTUM_COMPUTING,
+    ),
+    (
+        ["react", "node.js", "nodejs", "vue", "angular", "express",
+         "mongodb", "postgresql", "mysql", "rest api", "graphql",
+         "full stack", "fullstack", "frontend", "backend", "web app",
+         "django", "flask", "spring boot", "next.js"],
+        ProjectDomain.FULL_STACK_DEVELOPMENT,
+    ),
+    (
+        ["llm", "large language model", "gpt", "gemini", "ai agent",
+         "intelligent system", "artificial intelligence", "knowledge graph",
+         "expert system", "computer vision", "object detection", "yolo",
+         "reinforcement learning", "autonomous", "chatbot", "nlp pipeline"],
+        ProjectDomain.ARTIFICIAL_INTELLIGENCE,
+    ),
+]
+
+
+def resolve_domain(raw: str) -> ProjectDomain:
+    """
+    Map *raw* (whatever Gemini returned) to a valid :class:`ProjectDomain`.
+
+    1. Try an exact match against the enum values (case-insensitive).
+    2. Try a substring match against the enum values.
+    3. Scan ``raw`` for technology/algorithm keywords and pick the best domain.
+    4. Fall back to Artificial Intelligence if nothing matches.
+    """
+    normalised = raw.strip().lower()
+
+    # 1 – exact match
+    for member in ProjectDomain:
+        if normalised == member.value.lower():
+            return member
+
+    # 2 – substring match (e.g. "AI" → "Artificial Intelligence")
+    for member in ProjectDomain:
+        if member.value.lower() in normalised or normalised in member.value.lower():
+            return member
+
+    # 3 – keyword scan over the raw string
+    for keywords, domain in _DOMAIN_KEYWORDS:
+        for kw in keywords:
+            if kw in normalised:
+                return domain
+
+    # 4 – default
+    return ProjectDomain.ARTIFICIAL_INTELLIGENCE
 
 
 class ProjectAnalysis(BaseModel):
@@ -58,9 +134,9 @@ class ProjectInfo(BaseModel):
         default_factory=list,
         description="Datasets referenced or used in the project.",
     )
-    project_domain: str = Field(
-        default="",
-        description="High-level domain, e.g. 'Computer Vision', 'NLP', 'IoT'.",
+    project_domain: ProjectDomain = Field(
+        default=ProjectDomain.ARTIFICIAL_INTELLIGENCE,
+        description="One of the four fixed domains: Artificial Intelligence, Machine Learning, Quantum Computing, Full Stack Development.",
     )
     keywords: List[str] = Field(
         default_factory=list,

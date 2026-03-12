@@ -15,7 +15,7 @@ from schemas.project_schema import UploadResponse
 from services.embedding_service import generate_embedding
 from services.idea_analysis_service import generate_limitations_and_improvements
 from services.llm_service import extract_project_info
-from services.pdf_service import extract_text_from_pdf
+from services.pdf_service import SUPPORTED_EXTENSIONS, extract_text_from_file
 
 # ── Router definition ─────────────────────────────────────────────────────────
 # Tags appear in the Swagger UI to group related endpoints.
@@ -29,41 +29,52 @@ router = APIRouter(
     "",
     response_model=UploadResponse,
     status_code=status.HTTP_200_OK,
-    summary="Upload a student project PDF and extract structured information",
+    summary="Upload a project report (PDF or Markdown) and extract structured information",
     description=(
-        "Accept a PDF file, persist it to the uploads/ directory, extract "
-        "the full text with pdfplumber, send the text to the Gemini LLM, and "
-        "return structured project details including limitations and future "
-        "improvements as JSON."
+        "Accept a PDF or Markdown (.md) file, persist it to the uploads/ directory, "
+        "extract the full text, send it to the Gemini LLM, and return structured "
+        "project details including limitations and future improvements as JSON. "
+        "Markdown files do not need to follow any fixed structure — Gemini will infer "
+        "the fields from whatever content is present."
     ),
 )
 async def upload_project(
-    file: UploadFile = File(..., description="Student project report in PDF format"),
+    file: UploadFile = File(
+        ...,
+        description="Student project report as a PDF or Markdown (.md) file",
+    ),
 ) -> UploadResponse:
     """
     POST /upload-project
 
     Workflow
     --------
-    1. Validate that the uploaded file is a PDF.
+    1. Validate the file is a PDF or Markdown file (by extension).
     2. Save the file to the uploads/ directory with a unique name.
-    3. Extract plain text from the PDF using pdfplumber.
+    3. Extract plain text using the appropriate extractor.
     4. Send the text to Gemini to extract structured project information.
     5. Send the extracted info back to Gemini to generate limitations &
        future improvements.
     6. Merge both results and return the combined JSON to the caller.
     """
 
-    # ── Step 1 – Validate file type ───────────────────────────────────────────
-    if file.content_type != "application/pdf":
+    # ── Step 1 – Validate file type by extension ─────────────────────────────
+    # We check the filename extension rather than content_type because browsers
+    # commonly report .md files as text/plain or application/octet-stream.
+    original_filename = file.filename or "upload"
+    file_ext = Path(original_filename).suffix.lower()
+
+    if file_ext not in SUPPORTED_EXTENSIONS:
         raise HTTPException(
             status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
-            detail=f"Only PDF files are accepted. Got: {file.content_type}",
+            detail=(
+                f"Unsupported file type '{file_ext}'. "
+                f"Accepted types: .pdf, .md, .markdown"
+            ),
         )
 
     # ── Step 2 – Persist the file ─────────────────────────────────────────────
     # Use a UUID prefix to prevent filename collisions in the uploads/ folder.
-    original_filename = file.filename or "upload.pdf"
     unique_filename = f"{uuid.uuid4().hex}_{original_filename}"
     destination: Path = settings.UPLOAD_DIR / unique_filename
 
@@ -81,9 +92,9 @@ async def upload_project(
         # Always close the UploadFile handle to free resources.
         await file.close()
 
-    # ── Step 3 – Extract text from the PDF ───────────────────────────────────
+    # ── Step 3 – Extract text from the file (PDF or Markdown) ────────────────
     try:
-        extracted_text: str = extract_text_from_pdf(destination)
+        extracted_text: str = extract_text_from_file(destination)
     except FileNotFoundError as exc:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,

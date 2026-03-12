@@ -1,0 +1,324 @@
+[
+  {
+    "project_title": "Citizen Grievance Classification & Auto-Resolution Platform",
+    "abstract": "An AI-powered platform that automatically classifies citizen grievances, assigns severity scores, routes them to the correct government departments, tracks resolution timelines, and escalates unresolved complaints to ensure transparency, accountability, and faster resolution.",
+    "problem_statement": "Government grievance portals receive massive volumes of citizen complaints daily. Manual classification, routing, and follow-ups lead to delays, misrouting, and unresolved issues with no accountability mechanism.",
+    "methods_approach": "NLP-based complaint classification combined with computer vision for media analysis, severity scoring using keyword detection and community upvotes, and automated SLA-driven escalation workflows.",
+    "algorithms_models": ["BERT", "RoBERTa", "spaCy NER", "K-Means Clustering", "SSIM Image Comparison", "OCR (Tesseract)"],
+    "technologies_used": ["FastAPI", "React.js", "PostgreSQL", "MongoDB", "Redis", "Celery", "Socket.io", "Docker", "Twilio", "Google Maps API"],
+    "datasets_used": ["Custom civic complaint dataset", "Government grievance portal data"],
+    "project_domain": "Artificial Intelligence",
+    "keywords": ["NLP", "grievance classification", "auto-routing", "SLA monitoring", "government AI", "smart governance"],
+    "github_repo": "https://github.com/kranthinaremsetti/miracle-hackathon",
+    "limitations": [
+      "NLP model accuracy depends on training data quality and may degrade for regional dialects.",
+      "Image-only complaints without extractable text are not fully supported.",
+      "Real-time SLA polling is resource-intensive at very large scale."
+    ],
+    "future_improvements": [
+      "Federated learning across municipalities to improve model generalization.",
+      "IoT sensor integration for proactive complaint detection.",
+      "Blockchain-based immutable audit trail for grievance records."
+    ]
+  },
+  {
+    "project_title": "AI Personal Study Assistant",
+    "abstract": "An intelligent study assistant that uses large language models to generate personalised study plans, answer academic questions, summarise lecture notes, and quiz students based on their syllabus.",
+    "problem_statement": "Students struggle to organise study material, identify weak areas, and get instant academic support outside classroom hours.",
+    "methods_approach": "Retrieval-Augmented Generation (RAG) over uploaded study material combined with a conversational LLM interface for Q&A and adaptive quiz generation.",
+    "algorithms_models": ["RAG (Retrieval-Augmented Generation)", "GPT-4 / Gemini", "Sentence Transformers", "FAISS Vector Search"],
+    "technologies_used": ["Python", "LangChain", "FastAPI", "React.js", "PostgreSQL", "OpenAI API", "Gemini API", "FAISS"],
+    "datasets_used": ["Student-uploaded lecture notes", "OpenStax textbooks", "NCERT PDFs"],
+    "project_domain": "Artificial Intelligence",
+    "keywords": ["LLM", "RAG", "study assistant", "adaptive learning", "AI tutor", "education AI"],
+    "github_repo": "",
+    "limitations": [
+      "Accuracy depends on the quality and completeness of uploaded study materials.",
+      "API costs for LLM calls can be prohibitive for large user bases."
+    ],
+    "future_improvements": [
+      "Fine-tune a domain-specific model on academic Q&A datasets.",
+      "Integrate with university LMS platforms like Moodle and Canvas."
+    ]
+  },
+  {
+    "project_title": "AI Resume Screening System",
+    "abstract": "An AI-driven recruitment tool that automatically parses resumes, scores candidates against job descriptions using semantic similarity, shortlists top candidates, and generates structured summaries for recruiters.",
+    "problem_statement": "HR teams spend excessive time manually reviewing hundreds of resumes for each job opening, leading to inconsistent evaluations, missed talent, and slow hiring cycles.",
+    "methods_approach": "Resume parsing using NER, semantic similarity scoring between resume content and job description using sentence embeddings, and a ranking engine that weights skills, experience, and education.",
+    "algorithms_models": ["BERT Sentence Embeddings", "spaCy NER", "Cosine Similarity", "Logistic Regression Ranking"],
+    "technologies_used": ["Python", "FastAPI", "spaCy", "Hugging Face Transformers", "pdfplumber", "React.js", "PostgreSQL"],
+    "datasets_used": ["Kaggle Resume Dataset", "Custom annotated JD-Resume pairs"],
+    "project_domain": "Artificial Intelligence",
+    "keywords": ["resume screening", "NLP", "semantic similarity", "HR automation", "recruitment AI"],
+    "github_repo": "",
+    "limitations": [
+      "May inherit biases present in historical hiring data.",
+      "Cannot evaluate soft skills or cultural fit from text alone."
+    ],
+    "future_improvements": [
+      "Add explainability module to justify each candidate score.",
+      "Support video interview analysis for multi-modal candidate assessment."
+    ]
+  },
+  {
+    "project_title": "Intelligent Chatbot for Student Support",
+    "abstract": "A multilingual, context-aware conversational AI chatbot that answers student queries about campus services, academic policies, exam schedules, and fee structures using a knowledge base built from institutional documents.",
+    "problem_statement": "University support desks are overwhelmed with repetitive queries. Students often cannot find answers quickly, especially outside office hours, leading to frustration and delays.",
+    "methods_approach": "Intent classification using fine-tuned BERT, combined with a knowledge graph of institutional FAQs and a dialogue management system that maintains conversation context.",
+    "algorithms_models": ["BERT Intent Classification", "Knowledge Graph QA", "Dialogue State Tracking", "TF-IDF Fallback Retrieval"],
+    "technologies_used": ["Python", "Rasa", "Hugging Face Transformers", "Neo4j", "React.js", "FastAPI", "SQLite"],
+    "datasets_used": ["Institutional FAQ documents", "Student query logs (anonymised)"],
+    "project_domain": "Artificial Intelligence",
+    "keywords": ["chatbot", "NLP", "intent classification", "knowledge graph", "student support", "dialogue systems"],
+    "github_repo": "",
+    "limitations": [
+      "Out-of-scope queries may receive irrelevant responses without graceful fallback.",
+      "Knowledge base must be manually updated when policies change."
+    ],
+    "future_improvements": [
+      "Continuously fine-tune on new query logs using active learning.",
+      "Add voice interface for accessibility support."
+    ]
+  },
+  {
+    "project_title": "Plant Disease Detection using CNN",
+    "abstract": "A deep learning system that identifies plant diseases from leaf photographs with high accuracy, enabling farmers to receive instant diagnosis and treatment recommendations through a mobile application.",
+    "problem_statement": "Crop diseases cause significant agricultural losses globally. Farmers in rural areas lack access to expert agronomists for timely disease identification and treatment advice.",
+    "methods_approach": "Convolutional Neural Network trained on plant leaf images to classify 38 disease categories. Transfer learning from ResNet50 pre-trained on ImageNet, fine-tuned on the PlantVillage dataset.",
+    "algorithms_models": ["ResNet50 (Transfer Learning)", "CNN", "Data Augmentation", "Softmax Classification"],
+    "technologies_used": ["Python", "TensorFlow", "Keras", "OpenCV", "Flask", "React Native", "PlantVillage API"],
+    "datasets_used": ["PlantVillage Dataset (54,000+ images)", "Custom field-collected leaf images"],
+    "project_domain": "Machine Learning",
+    "keywords": ["CNN", "plant disease", "transfer learning", "ResNet50", "agriculture", "image classification"],
+    "github_repo": "",
+    "limitations": [
+      "Performance degrades on images taken under poor lighting conditions.",
+      "Dataset covers only 26 plant species — does not generalise to all crops."
+    ],
+    "future_improvements": [
+      "Extend dataset with drone-captured field images for real-world robustness.",
+      "Add treatment recommendation engine powered by agronomist-reviewed guidelines."
+    ]
+  },
+  {
+    "project_title": "Stock Price Prediction using LSTM",
+    "abstract": "A time-series forecasting system that uses Long Short-Term Memory networks to predict short-term stock price movements based on historical price data and technical indicators.",
+    "problem_statement": "Stock markets are highly volatile and difficult to predict. Individual investors lack the computational tools to analyse complex temporal patterns in historical price data.",
+    "methods_approach": "LSTM networks with stacked layers trained on 5-year historical OHLCV data combined with technical indicators (RSI, MACD, Bollinger Bands). Sliding window approach for sequence generation.",
+    "algorithms_models": ["LSTM", "GRU", "ARIMA (baseline)", "Dropout Regularisation", "Min-Max Normalisation"],
+    "technologies_used": ["Python", "TensorFlow", "Keras", "pandas", "yfinance API", "Matplotlib", "Streamlit"],
+    "datasets_used": ["Yahoo Finance historical data", "NSE/BSE OHLCV data"],
+    "project_domain": "Machine Learning",
+    "keywords": ["LSTM", "time series", "stock prediction", "deep learning", "financial forecasting"],
+    "github_repo": "",
+    "limitations": [
+      "Cannot account for sudden market shocks caused by news or geopolitical events.",
+      "Predictions degrade significantly beyond a 5-day horizon."
+    ],
+    "future_improvements": [
+      "Incorporate sentiment analysis of financial news as an additional input feature.",
+      "Explore Transformer-based temporal models (Temporal Fusion Transformer)."
+    ]
+  },
+  {
+    "project_title": "Face Recognition Attendance System",
+    "abstract": "An automated attendance management system using real-time face recognition to identify students or employees from a camera feed, record attendance in a database, and generate reports.",
+    "problem_statement": "Manual attendance marking is time-consuming, prone to proxy attendance fraud, and difficult to analyse for large institutions.",
+    "methods_approach": "Face detection using MTCNN, face embedding generation using FaceNet, and nearest-neighbour classification against a registered face database. Real-time video processing with OpenCV.",
+    "algorithms_models": ["MTCNN Face Detection", "FaceNet Embeddings", "KNN Classifier", "PCA Dimensionality Reduction"],
+    "technologies_used": ["Python", "OpenCV", "TensorFlow", "FaceNet", "Flask", "SQLite", "React.js"],
+    "datasets_used": ["Labelled Face Database (LFW)", "Custom institutional face dataset"],
+    "project_domain": "Machine Learning",
+    "keywords": ["face recognition", "attendance system", "FaceNet", "MTCNN", "biometrics", "computer vision"],
+    "github_repo": "",
+    "limitations": [
+      "Accuracy decreases with lighting variation, occlusion (masks), or significant appearance changes.",
+      "Privacy regulations may restrict deployment in certain jurisdictions."
+    ],
+    "future_improvements": [
+      "Add liveness detection to prevent spoofing with printed photos.",
+      "Integrate with existing ERP systems for automated report generation."
+    ]
+  },
+  {
+    "project_title": "Credit Card Fraud Detection Model",
+    "abstract": "A machine learning pipeline that detects fraudulent credit card transactions in real time by identifying anomalous spending patterns, achieving high precision while minimising false positives that inconvenience legitimate customers.",
+    "problem_statement": "Credit card fraud causes billions of dollars in losses annually. Detecting fraud in real time while keeping false positive rates low is a critical challenge for financial institutions.",
+    "methods_approach": "Ensemble of Gradient Boosting and Neural Network models trained on heavily imbalanced transaction data. SMOTE oversampling for class balancing, SHAP for explainability.",
+    "algorithms_models": ["XGBoost", "LightGBM", "Isolation Forest (Anomaly Detection)", "SMOTE", "SHAP Explainability"],
+    "technologies_used": ["Python", "scikit-learn", "XGBoost", "LightGBM", "pandas", "imbalanced-learn", "FastAPI", "PostgreSQL"],
+    "datasets_used": ["Kaggle Credit Card Fraud Dataset (284,807 transactions)", "Synthetic financial transaction data"],
+    "project_domain": "Machine Learning",
+    "keywords": ["fraud detection", "anomaly detection", "XGBoost", "imbalanced data", "SMOTE", "financial ML"],
+    "github_repo": "",
+    "limitations": [
+      "Class imbalance is extreme (0.17% fraud rate), making recall optimisation challenging.",
+      "Model drift requires regular retraining as fraud patterns evolve."
+    ],
+    "future_improvements": [
+      "Deploy as a real-time streaming pipeline using Apache Kafka.",
+      "Add graph neural network layer to detect organised fraud rings."
+    ]
+  },
+  {
+    "project_title": "Quantum Random Number Generator",
+    "abstract": "A quantum computing application that harnesses the inherent randomness of quantum measurement to generate truly random numbers, verifiably superior to classical pseudo-random number generators.",
+    "problem_statement": "Classical pseudo-random number generators are deterministic and therefore cryptographically predictable. True randomness is essential for cryptographic key generation and secure systems.",
+    "methods_approach": "Quantum circuits implemented in Qiskit that place qubits into superposition using Hadamard gates and measure the collapse to generate unpredictable bit strings. Executed on IBM Quantum hardware.",
+    "algorithms_models": ["Hadamard Gate Superposition", "Quantum Measurement", "NIST Randomness Test Suite"],
+    "technologies_used": ["Python", "Qiskit", "IBM Quantum Experience", "NumPy", "Matplotlib"],
+    "datasets_used": [],
+    "project_domain": "Quantum Computing",
+    "keywords": ["quantum computing", "Qiskit", "random number generation", "superposition", "quantum measurement", "cryptography"],
+    "github_repo": "",
+    "limitations": [
+      "IBM Quantum hardware is subject to gate noise and decoherence, affecting output quality.",
+      "Hardware access is limited by queue times on free-tier IBM Quantum accounts."
+    ],
+    "future_improvements": [
+      "Implement error mitigation techniques (ZNE) to improve output fidelity.",
+      "Integrate with hardware security modules (HSMs) for production cryptographic use."
+    ]
+  },
+  {
+    "project_title": "Quantum Machine Learning for Classification",
+    "abstract": "A hybrid quantum-classical machine learning system that uses Variational Quantum Circuits (VQC) as a trainable model layer within a classical ML pipeline to classify structured datasets.",
+    "problem_statement": "Classical ML models face computational bottlenecks on certain high-dimensional datasets. Quantum computing offers the potential for exponential speedups through quantum feature spaces.",
+    "methods_approach": "Variational Quantum Circuits with parameterised Rx/Ry rotation gates trained via gradient descent. The quantum layer is embedded in a hybrid pipeline alongside classical pre/post-processing stages.",
+    "algorithms_models": ["Variational Quantum Circuit (VQC)", "Quantum Feature Map", "COBYLA Optimiser", "Quantum Kernel Estimation"],
+    "technologies_used": ["Python", "Qiskit", "Qiskit Machine Learning", "PennyLane", "scikit-learn", "NumPy"],
+    "datasets_used": ["Iris Dataset", "Breast Cancer Wisconsin Dataset"],
+    "project_domain": "Quantum Computing",
+    "keywords": ["quantum machine learning", "VQC", "Qiskit", "PennyLane", "hybrid quantum-classical", "quantum kernel"],
+    "github_repo": "",
+    "limitations": [
+      "Current NISQ (Noisy Intermediate-Scale Quantum) hardware limits circuit depth and qubit count.",
+      "No demonstrated quantum advantage over classical ML on practical datasets yet."
+    ],
+    "future_improvements": [
+      "Benchmark against classical SVM and neural network baselines on larger datasets.",
+      "Explore quantum transfer learning using pre-trained quantum circuit layers."
+    ]
+  },
+  {
+    "project_title": "Quantum Optimization for Logistics",
+    "abstract": "A quantum optimisation application that solves the Travelling Salesman Problem (TSP) and vehicle routing problems using the Quantum Approximate Optimisation Algorithm (QAOA), demonstrating potential speedups over classical solvers.",
+    "problem_statement": "Logistics and supply chain routing problems are NP-hard and computationally intractable for large instances using classical algorithms, leading to suboptimal routes and increased operational costs.",
+    "methods_approach": "QAOA circuit formulation of the TSP as a QUBO (Quadratic Unconstrained Binary Optimisation) problem, solved with variational parameter optimisation on Qiskit Aer simulator and IBM Quantum hardware.",
+    "algorithms_models": ["QAOA", "QUBO Formulation", "TSP Graph Encoding", "Classical COBYLA Optimiser"],
+    "technologies_used": ["Python", "Qiskit", "Qiskit Optimisation", "IBM Quantum", "NetworkX", "Matplotlib"],
+    "datasets_used": ["TSPLIB benchmark instances", "Custom synthetic logistics graphs"],
+    "project_domain": "Quantum Computing",
+    "keywords": ["QAOA", "quantum optimization", "TSP", "QUBO", "logistics", "combinatorial optimization"],
+    "github_repo": "",
+    "limitations": [
+      "QAOA requires deep circuits that exceed current NISQ hardware coherence times for large instances.",
+      "Classical heuristics (simulated annealing, genetic algorithms) still outperform QAOA on practical logistics instances."
+    ],
+    "future_improvements": [
+      "Apply to real-world last-mile delivery datasets from logistics companies.",
+      "Combine QAOA with classical local search for hybrid warm-starting."
+    ]
+  },
+  {
+    "project_title": "Quantum Cryptography Simulation",
+    "abstract": "A simulation of the BB84 Quantum Key Distribution (QKD) protocol, demonstrating how quantum mechanics guarantees unconditionally secure communication by detecting eavesdroppers through quantum state disturbance.",
+    "problem_statement": "Classical public-key cryptography (RSA, ECC) will become vulnerable to attacks from sufficiently powerful quantum computers running Shor's algorithm. Quantum cryptography offers information-theoretically secure alternatives.",
+    "methods_approach": "Simulation of BB84 protocol phases: qubit preparation, quantum channel transmission, basis reconciliation, eavesdropper detection, and privacy amplification. Implemented using Qiskit with configurable noise and eavesdropping scenarios.",
+    "algorithms_models": ["BB84 Protocol", "Shor's Algorithm (Demo)", "Quantum Error Correction (surface codes)", "Privacy Amplification"],
+    "technologies_used": ["Python", "Qiskit", "Qiskit Aer", "Matplotlib", "NumPy"],
+    "datasets_used": [],
+    "project_domain": "Quantum Computing",
+    "keywords": ["quantum cryptography", "BB84", "QKD", "quantum key distribution", "Qiskit", "post-quantum security"],
+    "github_repo": "",
+    "limitations": [
+      "Simulation does not account for physical channel losses experienced in real-world fibre-optic QKD systems.",
+      "Key generation rate decreases sharply in the presence of high noise levels."
+    ],
+    "future_improvements": [
+      "Implement E91 entanglement-based QKD protocol for comparison.",
+      "Extend to satellite-based QKD scenarios using realistic atmospheric noise models."
+    ]
+  },
+  {
+    "project_title": "Online Course Management System",
+    "abstract": "A full-stack learning management system enabling instructors to create and publish courses, students to enroll and track progress, and administrators to manage users, certificates, and analytics.",
+    "problem_statement": "Educational institutions and independent instructors lack affordable, self-hosted platforms for online course delivery with features comparable to commercial LMS solutions.",
+    "methods_approach": "RESTful API backend serving a React SPA. Role-based access control for students, instructors, and admins. Video content hosted on cloud storage with adaptive streaming. Progress tracking with completion percentages per module.",
+    "algorithms_models": ["JWT Authentication", "RBAC Authorisation", "Progress Tracking Algorithm"],
+    "technologies_used": ["React.js", "Node.js", "Express.js", "PostgreSQL", "AWS S3", "AWS CloudFront", "Redis", "Docker", "Stripe API"],
+    "datasets_used": [],
+    "project_domain": "Full Stack Development",
+    "keywords": ["LMS", "e-learning", "React", "Node.js", "full stack", "course management", "REST API"],
+    "github_repo": "",
+    "limitations": [
+      "Video transcoding pipeline requires dedicated compute resources and adds upload latency.",
+      "Does not support real-time collaborative features like shared whiteboards."
+    ],
+    "future_improvements": [
+      "Add live classroom functionality using WebRTC for real-time video.",
+      "Integrate AI-powered quiz generator for automated assessment creation."
+    ]
+  },
+  {
+    "project_title": "E-commerce Platform with Payment Integration",
+    "abstract": "A full-featured e-commerce web application with product catalogue management, shopping cart, order management, Stripe payment integration, and an admin panel for inventory and analytics.",
+    "problem_statement": "Small businesses need affordable, customisable e-commerce solutions that can be self-hosted and extended without dependency on third-party platforms.",
+    "methods_approach": "Microservices-inspired monolith with separate modules for catalogue, cart, orders, payments, and notifications. Stripe Checkout for PCI-compliant payment processing. Server-side rendering with Next.js for SEO.",
+    "algorithms_models": ["Stripe Payment Webhooks", "JWT Session Management", "Elasticsearch Product Search"],
+    "technologies_used": ["Next.js", "React.js", "Node.js", "Express.js", "MongoDB", "Redis", "Stripe API", "AWS S3", "Tailwind CSS", "Docker"],
+    "datasets_used": ["Mock product catalogue dataset"],
+    "project_domain": "Full Stack Development",
+    "keywords": ["e-commerce", "Next.js", "Stripe", "Node.js", "MongoDB", "full stack", "payment integration"],
+    "github_repo": "",
+    "limitations": [
+      "Single-server deployment does not scale horizontally without additional infrastructure work.",
+      "Search functionality is basic; advanced filters require Elasticsearch tuning."
+    ],
+    "future_improvements": [
+      "Add ML-based product recommendation engine using collaborative filtering.",
+      "Implement progressive web app features for offline catalogue browsing."
+    ]
+  },
+  {
+    "project_title": "Collaborative Code Editor Web App",
+    "abstract": "A browser-based collaborative code editor supporting multiple simultaneous users editing the same file in real time with syntax highlighting, code execution, and version history.",
+    "problem_statement": "Remote development teams and students in online coding sessions lack lightweight browser-based tools for synchronous code collaboration without heavyweight IDE installations.",
+    "methods_approach": "Operational Transformation (OT) algorithm for conflict-free real-time text synchronisation across clients. Monaco Editor (VS Code engine) in the browser. WebSocket-based presence and cursor sharing.",
+    "algorithms_models": ["Operational Transformation (OT)", "CRDT (fallback)", "Monaco Editor AST Parsing"],
+    "technologies_used": ["React.js", "Node.js", "Socket.io", "Monaco Editor", "Express.js", "Redis (session)", "PostgreSQL", "Docker"],
+    "datasets_used": [],
+    "project_domain": "Full Stack Development",
+    "keywords": ["collaborative editor", "WebSocket", "operational transformation", "Monaco", "real-time", "full stack"],
+    "github_repo": "",
+    "limitations": [
+      "Operational Transformation complexity increases significantly beyond 3–4 concurrent editors.",
+      "Code execution sandbox requires careful resource limiting to prevent abuse."
+    ],
+    "future_improvements": [
+      "Migrate from OT to CRDT (Y.js) for better scalability and offline support.",
+      "Add AI pair programmer integration (Copilot-style completions)."
+    ]
+  },
+  {
+    "project_title": "Real-time Chat Application",
+    "abstract": "A modern real-time messaging application with private chats, group channels, media sharing, message reactions, read receipts, and push notifications, built with a scalable WebSocket architecture.",
+    "problem_statement": "Teams and communities need open-source, self-hostable real-time communication tools that do not compromise on features or data privacy.",
+    "methods_approach": "WebSocket connections for message delivery with a Redis Pub/Sub layer for horizontal scaling. JWT-authenticated REST API for message history and user management. Service workers for web push notifications.",
+    "algorithms_models": ["Redis Pub/Sub Fan-out", "JWT Auth", "Fuzzy Search (message history)"],
+    "technologies_used": ["React.js", "Node.js", "Socket.io", "Redis", "PostgreSQL", "AWS S3 (media)", "Firebase Cloud Messaging", "Docker", "Nginx"],
+    "datasets_used": [],
+    "project_domain": "Full Stack Development",
+    "keywords": ["real-time chat", "WebSocket", "Socket.io", "Redis", "full stack", "messaging", "push notifications"],
+    "github_repo": "",
+    "limitations": [
+      "End-to-end encryption is not yet implemented; messages are encrypted in transit (TLS) but readable server-side.",
+      "Scaling beyond 10,000 concurrent connections requires Redis Cluster configuration."
+    ],
+    "future_improvements": [
+      "Implement Signal Protocol for end-to-end encryption.",
+      "Add AI-powered message moderation to detect and filter abusive content."
+    ]
+  }
+]

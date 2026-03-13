@@ -1,6 +1,28 @@
 const ProjectExtraction = require("../models/ProjectExtraction");
 const { callFastApiForExtraction } = require("../services/fastapiService");
 
+const withAnalysisFallback = (project) => {
+  const info = project?.project_info || {};
+  const rawInfo = project?.raw_response?.extracted_info || {};
+
+  const limitations = Array.isArray(info.limitations) && info.limitations.length > 0
+    ? info.limitations
+    : (Array.isArray(rawInfo.limitations) ? rawInfo.limitations : []);
+
+  const futureImprovements = Array.isArray(info.future_improvements) && info.future_improvements.length > 0
+    ? info.future_improvements
+    : (Array.isArray(rawInfo.future_improvements) ? rawInfo.future_improvements : []);
+
+  return {
+    ...project,
+    project_info: {
+      ...info,
+      limitations,
+      future_improvements: futureImprovements
+    }
+  };
+};
+
 const uploadProjectReport = async (req, res, next) => {
   try {
     if (!req.file) {
@@ -38,9 +60,11 @@ const getProjects = async (req, res, next) => {
       .sort({ created_at: -1 })
       .lean();
 
+    const hydratedProjects = projects.map(withAnalysisFallback);
+
     return res.status(200).json({
-      count: projects.length,
-      projects
+      count: hydratedProjects.length,
+      projects: hydratedProjects
     });
   } catch (error) {
     return next(error);
@@ -56,7 +80,7 @@ const getProjectById = async (req, res, next) => {
     }
 
     return res.status(200).json({
-      project
+      project: withAnalysisFallback(project)
     });
   } catch (error) {
     return next(error);

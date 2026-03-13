@@ -11,7 +11,9 @@ const ProjectInfoSchema = new mongoose.Schema(
     datasets_used: { type: [String], default: [] },
     project_domain: { type: String, default: "" },
     keywords: { type: [String], default: [] },
-    github_repo: { type: String, default: "" }
+    github_repo: { type: String, default: "" },
+    limitations:{type:[String],default:[]},
+    future_improvements:{type:[String],default:[]}
   },
   { _id: false }
 );
